@@ -1,0 +1,111 @@
+<form [formGroup]="registerForm" (ngSubmit)="addUser()">
+  <h3>User Registration</h3>
+  <div>
+    <div>
+      <label>User Name :</label>
+    </div>
+    <div>
+      <input type="text" formControlName="name">
+    </div>
+  </div>
+  <div>
+    <div>
+      <label>Email :</label>
+    </div>
+    <div>
+      <input type="text" formControlName="email">
+    </div>
+  </div>
+  <div>
+    <div>
+      <label>Password :</label>
+    </div>
+    <div>
+      <input type="password" formControlName="password">
+    </div>
+  </div>
+  <div>
+    <button type="submit">Register</button>
+    <button type="reset">Reset</button>
+  </div>
+</form>
+
+<form (ngSubmit)="getUser()">
+  <h3>Update User Registration</h3>
+  <div>
+    <div>
+      <div>
+        <label>Id :</label>
+      </div>
+      <div>
+        <input type="text" [formControl]="idField">
+      </div>
+    </div>
+    <button [disabled]="!this.idField.value" type="submit">Get</button>
+  </div>
+</form>
+
+<form [formGroup]="updateForm" (ngSubmit)="updateUser()" *ngIf="userIdExists">
+  <div>
+    <div>
+      <label>User Name :</label>
+    </div>
+    <div>
+      <input type="text" formControlName="name">
+    </div>
+  </div>
+  <div>
+    <div>
+      <label>Email :</label>
+    </div>
+    <div>
+      <input type="text" formControlName="email">
+    </div>
+  </div>
+  <div>
+    <div>
+      <label>Password :</label>
+    </div>
+    <div>
+      <input type="password" formControlName="password">
+    </div>
+  </div>
+  <div>
+    <button type="submit">Update</button>
+    <button type="reset" (click)="userIdExists=false">Cancel</button>
+  </div>
+</form>
+<div *ngIf="userIdExists">
+<br><br>
+<button (click)="deleteUser()">Delete the User</button>
+<br>
+<br>
+</div>
+<br>
+<button (click)="displayUsers()">Display all users</button>
+<table>
+  <thead>
+    <th></th>
+    <th>ID</th>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Password</th>
+    <th></th>
+  </thead>
+  <tbody *ngFor="let user of users">
+    <td class="counterCell"></td>
+    <td>
+      {{user.id}}
+    </td>
+    <td>
+      {{user.email}}
+    </td>
+    <td>
+      {{user.name}}
+    </td>
+    <td>
+      {{user.password}}
+    </td>
+    <th><button (click)="putInEdit(user)">edit</button></th>
+  </tbody>
+</table>

@@ -1,0 +1,16 @@
+{
+  "posts": [
+    {
+      "name": "bala",
+      "email": "bala.p@gmail.com",
+      "password": "bala",
+      "id": 3
+    },
+    {
+      "name": "sai",
+      "email": "sai.s@gmail.com",
+      "password": "sai",
+      "id": 4
+    }
+  ]
+}

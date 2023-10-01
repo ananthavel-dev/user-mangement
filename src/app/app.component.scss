@@ -1,0 +1,12 @@
+table {
+    counter-reset: tableCount;     
+    border-collapse: collapse;
+}
+
+td, th {
+    border: 1px solid;
+}
+.counterCell:before {              
+    content: counter(tableCount); 
+    counter-increment: tableCount; 
+}
